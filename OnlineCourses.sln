@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourses.Domain.Test", "test\OnlineCourses.Domain.Test\OnlineCourses.Domain.Test.csproj", "{639E91C9-6C0A-403E-8410-C9BDC9E87768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineCourses.Domain", "src\OnlineCourses.Domain\OnlineCourses.Domain.csproj", "{6D68B2DF-7B01-4975-A5B3-57EEA47B36C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{639E91C9-6C0A-403E-8410-C9BDC9E87768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{639E91C9-6C0A-403E-8410-C9BDC9E87768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{639E91C9-6C0A-403E-8410-C9BDC9E87768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{639E91C9-6C0A-403E-8410-C9BDC9E87768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D68B2DF-7B01-4975-A5B3-57EEA47B36C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D68B2DF-7B01-4975-A5B3-57EEA47B36C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D68B2DF-7B01-4975-A5B3-57EEA47B36C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D68B2DF-7B01-4975-A5B3-57EEA47B36C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {001982B3-62FA-4E68-88A4-E6F710A072F9}
+	EndGlobalSection
+EndGlobal
