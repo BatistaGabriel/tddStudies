@@ -1,3 +1,4 @@
+using Bogus;
 using Moq;
 using OnlineCourses.Domain.Courses;
 using Xunit;
@@ -6,23 +7,37 @@ namespace OnlineCourses.Domain.Test.Courses
 {
     public class CoursesCareTakerTest
     {
-        [Fact]
-        public void MustAddCourse()
+        private readonly CourseDto _courseDto;
+        private readonly CoursesCareTaker _courseCareTaker;
+        private readonly Mock<ICourseRepository> _courseRepositoryMock;
+
+        public CoursesCareTakerTest()
         {
-            var courseDto = new CourseDto
+            var faker = new Faker();
+            _courseDto = new CourseDto
             {
-                Name = "New Course",
-                Hours = 80,
+                Name = faker.Random.Words(),
+                Hours = faker.Random.Double(10, 1000),
                 PublicId = 1,
-                Price = 200
+                Price = faker.Random.Double(10, 1000)
             };
 
-            var courseRepositoryMock = new Mock<ICourseRepository>();
+            _courseRepositoryMock = new Mock<ICourseRepository>();
+            _courseCareTaker = new CoursesCareTaker(_courseRepositoryMock.Object);
+        }
 
-            var courseCareTaker = new CoursesCareTaker(courseRepositoryMock.Object);
-            courseCareTaker.Store(courseDto);
+        [Fact(DisplayName = "Must Add a Course Based on the Dto")]
+        public void MustAddCourse()
+        {
+            _courseCareTaker.Store(_courseDto);
 
-            courseRepositoryMock.Verify(r => r.Add(It.IsAny<Course>()));
+            _courseRepositoryMock.Verify(r => r.Add(It.Is<Course>(
+                        c => c.Name == _courseDto.Name &&
+                        c.Hours == _courseDto.Hours &&
+                        c.Price == _courseDto.Price
+                    )
+                )
+            );
         }
     }
 
@@ -49,6 +64,7 @@ namespace OnlineCourses.Domain.Test.Courses
                 courseDto.Price
             );
 
+            _courseRepository.Add(course);
             _courseRepository.Add(course);
         }
     }
