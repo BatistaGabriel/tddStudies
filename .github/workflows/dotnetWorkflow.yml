@@ -27,18 +27,6 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-    - name: Checkout repo
-      uses: actions/checkout@v2
-
-    - name: Add dotnet-format problem matcher
-      uses: xt0rted/dotnet-format-problem-matcher@v1
-
-    - name: Restore dotnet tools
-      uses: xt0rted/dotnet-tool-restore@v1
-
-    - name: Run dotnet format
-      uses: xt0rted/dotnet-format@v1
-
     - name: DotNet Tests Report
       uses: zyborg/dotnet-tests-report@v1
       with:
