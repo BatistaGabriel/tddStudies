@@ -17,28 +17,24 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+    
     - name: Restore dependencies
       run: dotnet restore
+    
     - name: Build
       run: dotnet build --no-restore
+    
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: dotnet-format
-      # You may pin to the exact commit or the version.
-      # uses: xt0rted/dotnet-format@0cf110fed823231b56a2e6fdf8e5d62dc34c538b
-      uses: xt0rted/dotnet-format@v1.2.0
-      with:
-        # GITHUB_TOKEN token or a repo scoped PAT
-        repo-token: ${{ github.token }}
-        # Version of dotnet-format to use
-        version: 3
-        # Primary action dotnet-format should perform (check for errors or apply fixes)
-        action: check
-        # The job should fail if there's a formatting error
-        fail-fast: true
-    - name: dotnet-tests-report
-      # You may pin to the exact commit or the version.
-      # uses: zyborg/dotnet-tests-report@ce730c068bb73480dcb37c02d40890bf8b44c953
-      uses: zyborg/dotnet-tests-report@v1.4.4
-      with:
-        github_token: ${{ github.token }}
+      
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Add dotnet-format problem matcher
+      uses: xt0rted/dotnet-format-problem-matcher@v1
+
+    - name: Restore dotnet tools
+      uses: xt0rted/dotnet-tool-restore@v1
+
+    - name: Run dotnet format
+      uses: xt0rted/dotnet-format@v1
